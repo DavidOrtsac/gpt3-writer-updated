@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 //const basePromptPrefix = "generate a title of new korean love drama series for Netflix, setting: South Korea, and then write a detailed synopsis about this series where the protagonist name is:";
-const basePromptPrefix = "generate a list of content ideas for a business. list a minimum of 30 content ideas in bullet list.";
+const basePromptPrefix = "generate a list of content ideas. list a minimum of 30 content ideas in bullet list.";
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
