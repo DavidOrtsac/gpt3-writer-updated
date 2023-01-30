@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 //const basePromptPrefix = "generate a title of new korean love drama series for Netflix, setting: South Korea, and then write a detailed synopsis about this series where the protagonist name is:";
-const basePromptPrefix = "generate a list of content ideas. list a minimum of 30 content ideas in bullet list.";
+const basePromptPrefix = "Expand the following idea/thought and turn it into a debate topic:";
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
@@ -14,8 +14,8 @@ const generateAction = async (req, res) => {
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: `${basePromptPrefix}${req.body.userInput}\n`,
-    temperature: 0.7,
-    max_tokens: 250,
+    temperature: 0.8,
+    max_tokens: 100,
   });
   
   const basePromptOutput = baseCompletion.data.choices.pop();
@@ -32,13 +32,13 @@ const generateAction = async (req, res) => {
   Script:
   `
 */
-  const secondPrompt = 
+const secondPrompt = 
   `
-  Refine the content ideas and include brand name and industry below. Make it unique. Then create a table with following columns - number, content title, media direction. Make sure the list is numbered and column 1 has a number. For the content title, write a catchy title in the style of Apple. For the media direction, include detailed instruction on what graphics or video to create based on the content idea. 
-
-  Brand Name and Industry: ${req.body.userInput}
-
-  Content Ideas: ${basePromptOutput.text}
+Create two characters that are debating against each other. Write the Statement at the start of the debate. The first character's name is Side One, and he will defend the Statement by speaking in detailed, persuasive and logical essays proving his point. The second character's name is Side Two, and he will argue against the Statement by speaking in persuasive and logical essays. Side Two is a bit aggressive.
+Make them take two turns each. End the debate with an unbiased summary.
+Statement: ${req.body.userInput}
+Question: ${basePromptOutput.text}
+The Debate:
   `
   const secondPromptCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -46,7 +46,7 @@ const generateAction = async (req, res) => {
     // I set a higher temperature for this one. Up to you!
     temperature: 0.85,
     // I also increase max_tokens.
-    max_tokens: 1250,
+    max_tokens: 1550,
   });
   
   // Get the output
