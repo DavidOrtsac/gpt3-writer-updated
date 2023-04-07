@@ -11,7 +11,7 @@ const [isGenerating, setIsGenerating] = useState(false)
 const callGenerateEndpoint = async () => {
   setIsGenerating(true);
   
-  console.log("Calling OpenAI...")
+  console.log("Creating worksheet...")
   const response = await fetch('/api/generate', {
     method: 'POST',
     headers: {
@@ -22,7 +22,7 @@ const callGenerateEndpoint = async () => {
 
   const data = await response.json();
   const { output } = data;
-  console.log("OpenAI replied...", output.text)
+  console.log("HTMLizing...", output.text)
 
   setApiOutput(`${output.text}`);
   setIsGenerating(false);
@@ -31,20 +31,19 @@ const callGenerateEndpoint = async () => {
     console.log(event.target.value);
     setUserInput(event.target.value);
   };
+      
   return (
     <div className="root">
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>Debate Engine</h1>
-          </div>
-          <div className="header-subtitle">
-            <h2>Generate based arguments out of any topic so that you won't end up looking like a fool</h2>
+            <h1>The Worksheet Engine</h1>
+            <br></br>
+            <h2>Created by David Castro</h2>
           </div>
         </div>
-        {/* Add this code here*/}
         <div className="prompt-container">
-        <textarea className="prompt-box" placeholder="Are Dragonoids the best food in the world?" value={userInput} onChange={onUserChangedText} />;
+        <textarea className="prompt-box" placeholder="Paste your story/essay/report here. OR, you can type in what kind of story/essay/report you want and it will generate one for you, as well as worksheet questions. Note: Passages that are too long will break the engine." value={userInput} onChange={onUserChangedText} />
         <div className="prompt-buttons">
   <a
     className={isGenerating ? 'generate-button loading' : 'generate-button'}
@@ -55,7 +54,9 @@ const callGenerateEndpoint = async () => {
     </div>
   </a>
 </div>
+
   {apiOutput && (
+<article>
   <div className="output">
     <div className="output-header-container">
       <div className="output-header">
@@ -63,22 +64,25 @@ const callGenerateEndpoint = async () => {
       </div>
     </div>
     <div className="output-content">
-      <p>{apiOutput}</p>
+      <div dangerouslySetInnerHTML={{__html: apiOutput}}></div>
     </div>
   </div>
+  </article>
 )}
-        </div>
-      </div>
-      <div className="badge-container grow">
-        <a
-        >
+
+{/*  <div className="badge-container grow">
+        <a>
           <div className="badge">
-            <p>The Chinaman</p>
+            <p>Created by David Castro</p>
           </div>
         </a>
       </div>
     </div>
-  );
-};
+    */}
+        </div>
+      </div>
+    </div>
+  ); 
 
+};
 export default Home;

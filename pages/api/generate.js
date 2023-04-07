@@ -6,16 +6,17 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 //const basePromptPrefix = "generate a title of new korean love drama series for Netflix, setting: South Korea, and then write a detailed synopsis about this series where the protagonist name is:";
-const basePromptPrefix = "Expand the following idea/thought and turn it into a debate topic:";
+const basePromptPrefix = `You are a detailed and powerful, intelligent English teacher for stories and essays. Your goal is to analyze and then make worksheet questions and solution keys for stories and essays.
+Essay or Story. Analyze the story or essay. Then, create 4 difficult multiple-choice questions and solutions based on the essay and 2 true/false questionnaires with answers, and 1 essay question portion:\n`;
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: `${basePromptPrefix}${req.body.userInput}\n`,
+    prompt: `${basePromptPrefix}\n${req.body.userInput}\n`,
     temperature: 0.8,
-    max_tokens: 100,
+    max_tokens: 800,
   });
   
   const basePromptOutput = baseCompletion.data.choices.pop();
@@ -23,22 +24,19 @@ const generateAction = async (req, res) => {
 
 /*  const secondPrompt = 
   `
-  Take the character name and synopsis below and generate a script created in the style of Kim Won-seok. Make it feel like a movie. Don't just list the basic script. Include the description of the setting, a meet cute, and add conversations in the script:
-
-  Character Name: ${req.body.userInput}
-
-  Synopsis: ${basePromptOutput.text}
-
-  Script:
+  Then, place the entire essay or story and its questions, choices, and answers in an HTML file with a modern CSS design inside style tags. The text must always be black. The background must always be white. The font must be Times New Roman. The essay or story must be in a box. Each question and choices must be inside their own curved boxes.
+  THERE MUST BE A JAVASCRIPT BUTTON THAT, WHEN CLICKED, REVEALS THE ANSWERS FOR EACH QUESTION. Each answer, when revealed, must be in a separate outlined, curved box:
+Essay/Story:\n${req.body.userInput}
+Choices and Answers:\n${basePromptOutput.text}
+HTML and CSS code:\n
   `
 */
 const secondPrompt = 
   `
-Create two characters that are debating against each other. Write the Statement at the start of the debate. The first character's name is Side One, and he will defend the Statement by speaking in detailed, persuasive and logical essays proving his point. The second character's name is Side Two, and he will argue against the Statement by speaking in persuasive and logical essays. Side Two is a bit aggressive.
-Make them take two turns each. End the debate with an unbiased summary.
-Statement: ${req.body.userInput}
-Question: ${basePromptOutput.text}
-The Debate:
+  Then, place the entire essay or story and its questions, choices, and answers in an HTML file with a modern CSS design inside style tags. The text must always be black. The background must always be white. The essay or story must be in a box. Each question and choices must be inside their own curved boxes. DO NOT put shadows. The answer must be in a curved box. The whole document must be inside a black-bordered curved box.
+Essay/Story:\n${req.body.userInput}
+Choices and Answers:\n${basePromptOutput.text}
+HTML and CSS code:\n
   `
   const secondPromptCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -46,7 +44,7 @@ The Debate:
     // I set a higher temperature for this one. Up to you!
     temperature: 0.85,
     // I also increase max_tokens.
-    max_tokens: 1550,
+    max_tokens: 2550,
   });
   
   // Get the output
