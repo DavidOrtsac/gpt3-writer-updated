@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&family=Varela+Round&display=swap');
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Varela Round', sans-serif;
+    /* add a background gradient, from white to light blue, top to down */
+    background: linear-gradient(180deg, #ffffff 0%, #fff8f0 100%);
 }
-
+/* style */
 .root {
     display: flex;
     place-content: center flex-start;
@@ -39,7 +40,6 @@ body {
     flex-direction: column;
     width: 100%;
     align-items: center;
-    color: black;
 }
 
 .header-title {
@@ -55,10 +55,48 @@ body {
     line-height: 1.2em;
     text-align: center;
     margin: 0;
+    overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .01em;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+  --bg-size: 400%;
+  --color-one: hsl(48, 100%, 42%);
+  --color-two: hsl(292, 95%, 55%);
+  --color-three: hsl(0, 100%, 50%);
+  background: linear-gradient(
+                90deg,
+                var(--color-one),
+                var(--color-two),
+                var(--color-three),
+                var(--color-one)
+              ) 0 0 / var(--bg-size) 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: move-bg 8s infinite linear;
 }
+@media (prefers-reduced-motion: no-preference) {
+    .boujee-text {
+      animation: move-bg 8s linear infinite;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: var(--bg-size) 0;
+      }
+    }
+  }
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
 
 .header-subtitle h2 {
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.4em;
@@ -80,13 +118,14 @@ body {
 .prompt-box {
     border-bottom-width: 1px;
     border-color: rgb(219, 219, 219);
+    /* give this a gradient color, from white to subtle gray */
+    background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
     border-left-width: 1px;
     border-right-width: 1px;
     border-style: solid;
     border-top-width: 1px;
     place-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(219, 219, 219);
     border-radius: 16px;
     display: flex;
     flex: 0 0 auto;
@@ -113,7 +152,9 @@ body {
 }
 
 textarea {
-    font-family: 'Manrope', sans-serif;
+    border: 1px solid #ccc;
+    outline: 1px solid #ccc;
+    font-family: 'Varela Round', sans-serif;
 }
 
 
@@ -297,14 +338,14 @@ textarea {
 }
 
 .output-header h3 {
-    font-family: "Manrope", serif;
+    font-family: "Varela Round", serif;
     font-size: 28px;
     font-style: normal;
     font-weight: 800;
     letter-spacing: 0px;
     line-height: 1.4em;
     text-align: start;
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     text-transform: none;
     margin: 0;

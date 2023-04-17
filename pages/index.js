@@ -3,10 +3,10 @@ import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
 import { useState } from 'react';
 
-const Home = () => {
+const Home = () => { 
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('')
-const [isGenerating, setIsGenerating] = useState(false)
+  const [isGenerating, setIsGenerating] = useState(false)
 
 const callGenerateEndpoint = async () => {
   setIsGenerating(true);
@@ -37,9 +37,9 @@ const callGenerateEndpoint = async () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>The Worksheet Engine</h1>
-            <br></br>
-            <h2>Created by David Castro</h2>
+            <h1 className="bigtitle">The Worksheet Engine</h1>
+            <h2>by SkillMate</h2>
+
           </div>
         </div>
         <div className="prompt-container">
@@ -54,13 +54,16 @@ const callGenerateEndpoint = async () => {
     </div>
   </a>
 </div>
+<div className="App">
 
+      {/* <PDFFile /> */}
+    </div>
   {apiOutput && (
 <article>
   <div className="output">
     <div className="output-header-container">
       <div className="output-header">
-        <h3>Output</h3>
+        <h3>Worksheet</h3>
       </div>
     </div>
     <div className="output-content">

@@ -33,7 +33,7 @@ HTML and CSS code:\n
 */
 const secondPrompt = 
   `
-  Then, place the entire essay or story and its questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design inside style tags. The text must always be black. Do not style the background. The essay or story must be in a box. Each question and choices must be inside their own curved boxes. DO NOT put shadows. The answer must be in a colored, curved box. The whole document must be inside a black thin-bordered curved box.
+  Then, place the entire essay or story and its questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design inside style tags. The text must always be black. Do not style the body. The essay or story must be in a box. Each question and choice must be within curved boxes. DO NOT put shadows. The answer must be in a colored, curved box.
 Essay/Story:\n${req.body.userInput}
 Choices and Answers:\n${basePromptOutput.text}
 HTML and CSS code:\n
