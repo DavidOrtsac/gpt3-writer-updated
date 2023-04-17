@@ -11,6 +11,7 @@ export default function Document() {
           content=""
         />
         <meta name="twitter:card" content="summary_large_image"></meta>
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/39533509.js"></script>
         
       </Head>
       <body>
