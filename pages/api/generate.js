@@ -42,7 +42,7 @@ Follow the instructions below:
 4. The essay/story must be placed in a box.
 5. Each question must be placed in a curved box.
 6. Each of the choices must be placed under their respective questions, in a curved box.
-7. The answer must be placed in a colored, curved box underneath their respective choices. It's class name is "answerBox".
+7. The answer must be placed in a box under their respective choices. It's class name is "answerBox". DO NOT STYLE THE ANSWERBOX.
 8. Do not put shadows.
 
 HTML and CSS code:\n
