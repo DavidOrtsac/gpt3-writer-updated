@@ -115,6 +115,29 @@ body {
     width: min-content;
 }
 
+.answerBox {
+    position: sticky;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    padding: 15px;
+    /* add a rounded border */
+    border-radius: 16px;
+ }
+ .answerBox::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgb(91, 91, 91);
+    transition: 0.5s ease-in-out;
+    border-radius: 12px;
+ }
+ .answerBox:hover::before {
+    left: -100%;
+ }
 .prompt-box {
     border-bottom-width: 1px;
     border-color: rgb(219, 219, 219);

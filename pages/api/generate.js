@@ -32,10 +32,19 @@ HTML and CSS code:\n
   `
 */
 const secondPrompt = 
-  `
-  Then, place the entire essay or story and its questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design inside style tags. The text must always be black. Do not style the body. The essay or story must be in a box. Each question and choice must be within curved boxes. DO NOT put shadows. The answer must be in a colored, curved box.
-Essay/Story:\n${req.body.userInput}
+  `Essay/Story:\n${req.body.userInput}
 Choices and Answers:\n${basePromptOutput.text}
+
+Follow the instructions below:
+1. I want you to place the entire essay/story and its questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design.
+2. The text must always be black and readable. Do not change the font.
+3. Do not style the body.
+4. The essay/story must be placed in a box.
+5. Each question must be placed in a curved box.
+6. Each of the choices must be placed under their respective questions, in a curved box.
+7. Do not put shadows.
+8. The answer must be placed in a random-colored, curved box. It's class name is "answerBox".
+
 HTML and CSS code:\n
   `
   const secondPromptCompletion = await openai.createCompletion({
