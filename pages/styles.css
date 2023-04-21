@@ -127,11 +127,12 @@ body {
     content: "hover to see answer";
     background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
     transition: 1s;
+    
  }
 
  .answerBox:hover {
     color: black;
-    /* give this div a modern background gradient design */
+    /* give this div a modern background gradient design that's colorful */
 
  }
 .prompt-box {

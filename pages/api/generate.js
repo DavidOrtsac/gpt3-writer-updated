@@ -7,7 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const basePromptPrefix = `You are a detailed and powerful, intelligent English teacher for stories and essays. Your goal is to analyze and then make worksheet questions and solution keys for stories and essays.
-Essay or Story. Analyze the story or essay. Then, create 4 difficult multiple-choice questions and solutions based on the essay and 2 true/false questionnaires with answers, and 1 essay question portion:\n`;
+Essay or Story. Analyze the story or essay. Then, create 6 difficult multiple-choice questions and solutions based on the essay and 2 true/false questionnaires with answers, and 1 essay question portion. Make sure the answers are true and accurate:\n`;
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
@@ -36,8 +36,8 @@ const secondPrompt =
 Choices and Answers:\n${basePromptOutput.text}
 
 Follow the instructions below:
-1. I want you to place the entire essay/story and its questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design.
-2. The text must always be black and readable. Do not change the font.
+1. I want you to place the questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design. NO NEED TO INCLUDE <!DOCTYPE>. No need to include the actual essay/story text at the beginning of the HTML file.
+2. The text must always be black. Do not change the font.
 3. Do not style the body.
 4. The essay/story must be placed in a box.
 5. Each question must be placed in a curved box.
