@@ -7,7 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const basePromptPrefix = `You are a detailed and powerful, intelligent English teacher for stories and essays. Your goal is to analyze and then make worksheet questions and solution keys for stories and essays.
-Essay or Story. Analyze the story or essay. Then, create 6 difficult multiple-choice questions and solutions based on the essay and 2 true/false questionnaires with answers, and 1 essay question portion. Make sure the answers are true and accurate:\n`;
+Essay or Story. Analyze the story or essay. Then, create 6 difficult multiple-choice questions and solutions based on the essay and 2 true/false questionnaires with answers, and 1 essay question portion. Make sure the answers are true and accurate, and make sure that each of the answers are fact-checked:\n`;
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}`)

@@ -61,7 +61,7 @@ const callGenerateEndpoint = async () => {
   {apiOutput && (
 <article>
   <div className="output">
-  {userInput}
+  <p>{userInput}</p>
     <div className="output-header-container">
       <div className="output-header">
         <h3>Worksheet</h3>
