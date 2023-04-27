@@ -7,7 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const basePromptPrefix = `You are a detailed and powerful, intelligent English teacher for stories and essays. Your goal is to analyze and then make worksheet questions and solution keys for stories and essays.
-Essay or Story. Analyze the story or essay. Then, create 6 difficult multiple-choice questions and solutions based on the essay and 2 true/false questionnaires with answers, and 1 essay question portion. Make sure the answers are true and accurate, and make sure that each of the answers are fact-checked:\n`;
+Analyze the story or essay. Then, create 9 difficult, unique multiple-choice questions and solutions based on the essay with answers, and 1 essay question portion. Make sure the answers are true and accurate, and make sure that each of the answers are fact-checked:\n`;
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
@@ -36,14 +36,13 @@ const secondPrompt =
 Choices and Answers:\n${basePromptOutput.text}
 
 Follow the instructions below:
-1. I want you to place the questions, choices, and answers in an HTML file with a modern, clean, beautiful, and simple CSS design. NO NEED TO INCLUDE <!DOCTYPE>. No need to include the actual essay/story text at the beginning of the HTML file.
+1. I want you to place the questions, choices, and answers in an HTML file WITHOUT THE STYLE TAG SECTION OR CSS. DO NOT USE CSS. NO NEED TO INCLUDE <!DOCTYPE>. No need to include the actual essay/story text at the beginning of the HTML file.
 2. The text must always be black. Do not change the font.
-3. Do not style the body.
-4. The essay/story must be placed in a box.
-5. Each question must be placed in a curved box.
-6. Each of the choices must be placed under their respective questions, in a curved box.
-7. The answer must be placed in a box under their respective choices. It's class name is "answerBox". DO NOT STYLE THE ANSWERBOX.
-8. Do not put shadows.
+3. Do not style the body. Do not change any fonts.
+4. Each question must be placed in a question box. Give it the .questionBox class. Do not style the questionBox class.
+5. Each of the choices must be placed under their respective questions. Give the <p> tags the .choiceBox class. Do not style the choiceBox class.
+6. The answer must be placed in a box under their respective choices. It's class name is "answerBox". DO NOT STYLE THE ANSWERBOX.
+7. Do not put shadows.
 
 HTML and CSS code:\n
   `
@@ -51,7 +50,7 @@ HTML and CSS code:\n
     model: 'text-davinci-003',
     prompt: `${secondPrompt}`,
     temperature: 0.8,
-    max_tokens: 2550,
+    max_tokens: 1512,
   });
   
   // Grab output

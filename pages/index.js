@@ -43,10 +43,10 @@ const callGenerateEndpoint = async () => {
           </div>
         </div>
         <div className="prompt-container">
-        <textarea className="prompt-box" placeholder="Paste your story/essay/report here. OR, you can type in what kind of story/essay/report you want and it will generate one for you, as well as worksheet questions. Note: Passages that are too long will break the engine." value={userInput} onChange={onUserChangedText} />
+        <textarea className={isGenerating ? "prompt-box loading" : "prompt-box"} placeholder="Paste your story/essay/report here and the AI will convert it into a worksheet. Note: Passages that are too long will break the engine." value={userInput} onChange={onUserChangedText} required/>
         <div className="prompt-buttons">
   <a
-    className={isGenerating ? 'generate-button loading' : 'generate-button'}
+    className={isGenerating ? 'generate-button loading' : 'generate-button' }
     onClick={callGenerateEndpoint}
   >
     <div className="generate">

@@ -18,7 +18,7 @@ body {
     padding: 0px;
     position: relative;
 }
-
+  
 .container {
     display: flex;
     place-content: center flex-start;
@@ -115,11 +115,32 @@ body {
     width: min-content;
 }
 
+.box { 
+    border: 2px solid black; 
+    border-radius: 12px; 
+    padding: 10px; 
+    margin-top: 10px; 
+  } 
+  .choiceBox { 
+    border: 2px solid black; 
+    border-radius: 12px; 
+    padding: 10px; 
+    margin-top: 10px; 
+  } 
+  .questionBox { 
+    border: 2px solid black; 
+    border-radius: 12px; 
+    padding: 10px; 
+    margin-top: 10px; 
+    text-align: center; 
+  }
+
 .answerBox {
     top: 50%;
     left: 50%;
     font-size: 20px;
     padding: 15px;
+    border: 2px solid black;
     /* add a rounded border */
     border-radius: 16px;
     text-decoration: none;
@@ -268,8 +289,9 @@ textarea {
 }
 
 .loading {
-    opacity: 0.7;
-    cursor: default;
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none
 }
 
 .badge-container {
@@ -389,7 +411,42 @@ textarea {
     text-align: center;
     white-space: pre-line;
     color: black;
+}.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
 }
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 @media (min-width: 810px) and (max-width: 1199px) {
     .container {
