@@ -77,7 +77,7 @@ const callGenerateEndpoint = async () => {
 {/*  <div className="badge-container grow">
         <a>
           <div className="badge">
-            <p>Created by David Castro</p>
+            <p>Made by David Castro</p>
           </div>
         </a>
       </div>
