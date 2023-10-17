@@ -38,7 +38,7 @@ const callGenerateEndpoint = async () => {
         <div className="header">
           <div className="header-title">
             <h1 className="bigtitle">The Worksheet Engine</h1>
-            <h2>by SkillMate</h2>
+            <h2>by David Castro</h2>
 
           </div>
         </div>
