@@ -4,8 +4,8 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta property="og:title" content="The Worksheet Generator — DC" key="title"/>
-        <meta property="og:description" content="The Worksheet Generator" key="description"/>
+        <meta property="og:title" content="Self-Quiz Engine — DC" key="title"/>
+        <meta property="og:description" content="Self-Quiz Engine" key="description"/>
         <meta
           property="og:image"
           content=""

@@ -37,13 +37,13 @@ const callGenerateEndpoint = async () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1 className="bigtitle">The Worksheet Engine</h1>
+            <h1 className="bigtitle">The Self-Quiz Engine</h1>
             <h2>by David Castro</h2>
 
           </div>
         </div>
         <div className="prompt-container">
-        <textarea className={isGenerating ? "prompt-box loading" : "prompt-box"} placeholder="Paste your story/essay/report here and the AI will convert it into a worksheet. Note: Passages that are too long will break the engine." value={userInput} onChange={onUserChangedText} required/>
+        <textarea className={isGenerating ? "prompt-box loading" : "prompt-box"} placeholder="Paste your story/essay/report here and the AI will convert it into a self-study quiz. Note: Passages that are too long will break the engine." value={userInput} onChange={onUserChangedText} required/>
         <div className="prompt-buttons">
   <a
     className={isGenerating ? 'generate-button loading' : 'generate-button' }
@@ -64,7 +64,7 @@ const callGenerateEndpoint = async () => {
   <p>{userInput}</p>
     <div className="output-header-container">
       <div className="output-header">
-        <h3>Worksheet</h3>
+        <h3>Quiz</h3>
       </div>
     </div>
     <div className="output-content">

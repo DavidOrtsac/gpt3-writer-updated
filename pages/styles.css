@@ -1,12 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Varela Round', sans-serif;
-    /* add a background gradient, from white to light blue, top to down */
-    background: linear-gradient(180deg, #ffffff 0%, #fff8f0 100%);
+    font-family: 'Open Sans', sans-serif; /* Updated to Open Sans */
+    background: #ffffff;
 }
-/* style */
+
+.header-title h1, .header-subtitle h2, .prompt-box, .choiceBox, .questionBox, .answerBox, .output-header h3, .output-content p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Simplify and professionalize styles throughout */
+
 .root {
     display: flex;
     place-content: center flex-start;
@@ -18,21 +24,20 @@ body {
     padding: 0px;
     position: relative;
 }
-  
+
 .container {
     display: flex;
     place-content: center flex-start;
     align-items: center;
     flex: 0 0 auto;
     flex-flow: column nowrap;
-    gap: 10px;
+    gap: 64px;
     height: fit-content;
     max-width: 975px;
     overflow: auto;
     padding: 50px;
     position: relative;
     width: auto;
-    gap: 64px;
 }
 
 .header {    
@@ -49,51 +54,16 @@ body {
 
 .header-title h1 {
     width: 100%;
-    font-weight: 700;
+    font-weight: bold; /* Make header title bold */
     font-size: 72px;
+    color: black; /* Make header title text bold black */
     letter-spacing: -4px;
     line-height: 1.2em;
     text-align: center;
     margin: 0;
-    overflow: hidden;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .01em;
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-  --bg-size: 400%;
-  --color-one: hsl(48, 100%, 42%);
-  --color-two: hsl(292, 95%, 55%);
-  --color-three: hsl(0, 100%, 50%);
-  background: linear-gradient(
-                90deg,
-                var(--color-one),
-                var(--color-two),
-                var(--color-three),
-                var(--color-one)
-              ) 0 0 / var(--bg-size) 100%;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: move-bg 8s infinite linear;
+    background: none; /* Remove gradient */
+    animation: none; /* Remove animation for a professional look */
 }
-@media (prefers-reduced-motion: no-preference) {
-    .boujee-text {
-      animation: move-bg 8s linear infinite;
-    }
-    @keyframes move-bg {
-      to {
-        background-position: var(--bg-size) 0;
-      }
-    }
-  }
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
 
 .header-subtitle h2 {
     font-size: 15px;
@@ -199,6 +169,14 @@ textarea {
     overflow: hidden;
     transition: 1s;
 }
+
+.input-instruction {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+  }
+  
 
 
 .prompt-box:focus {
