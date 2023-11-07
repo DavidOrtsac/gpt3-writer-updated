@@ -177,6 +177,14 @@ textarea {
     color: #333;
   }
   
+  .character-counter {
+    text-align: left !important;
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    /* make the text smaller */
+    font-size: 13px;
+  }  
 
 
 .prompt-box:focus {
@@ -244,7 +252,7 @@ textarea {
     gap: 10px;
     height: min-content;
     overflow: hidden;
-    padding: 16px 24px;
+    padding: 16px 30px;
     position: relative;
     text-decoration: none;
     width: min-content;
@@ -486,7 +494,17 @@ textarea {
     }
 
     .prompt-box {
-        width: 100%;
+        width: 70%;
+    }
+    
+    .bigtitle {
+        font-size: 50px;
+    }
+    /* write a comedic poem here */
+
+    .character-counter
+    {
+        text-align: center !important;
     }
 }
 

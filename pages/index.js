@@ -5,13 +5,14 @@ import { useState } from 'react';
 
 const Home = () => { 
   const [userInput, setUserInput] = useState('');
-  const [apiOutput, setApiOutput] = useState('')
-  const [isGenerating, setIsGenerating] = useState(false)
+  const [apiOutput, setApiOutput] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const characterLimit = 7000;
 
 const callGenerateEndpoint = async () => {
   setIsGenerating(true);
   
-  console.log("Creating worksheet...")
+  console.log("Creating quiz questions and answers...")
   const response = await fetch('/api/generate', {
     method: 'POST',
     headers: {
@@ -43,16 +44,32 @@ const callGenerateEndpoint = async () => {
           </div>
         </div>
         <div className="prompt-container">
-        <textarea className={isGenerating ? "prompt-box loading" : "prompt-box"} placeholder="Paste your story/essay/report here and the AI will convert it into a self-study quiz. Note: Passages that are too long will break the engine." value={userInput} onChange={onUserChangedText} required/>
+        <textarea
+        className={isGenerating ? "prompt-box loading" : "prompt-box"}
+        placeholder="Paste your story/essay/report here and the AI will convert it into a self-study quiz."
+        value={userInput}
+        onChange={onUserChangedText}
+        maxLength={characterLimit}
+        required
+      />
+            <div className="character-counter">
+        {`‎ ${userInput.length}/${characterLimit}`}
+      </div>
+
         <div className="prompt-buttons">
-  <a
-    className={isGenerating ? 'generate-button loading' : 'generate-button' }
-    onClick={callGenerateEndpoint}
-  >
-    <div className="generate">
-    {isGenerating ? <span className="loader"></span> : <p>Generate</p>}
-    </div>
-  </a>
+        <a
+  className={isGenerating ? 'generate-button loading' : 'generate-button'}
+  onClick={!isGenerating ? callGenerateEndpoint : null} // Prevent the button from being clicked again when already generating
+>
+  <div className="generate">
+    {isGenerating ? (
+      <span className="loader"></span> // Show only the loader when generating
+    ) : (
+      <p>Generate</p> // Show button text when not generating
+    )}
+  </div>
+</a>
+
 </div>
 <div className="App">
 
@@ -61,7 +78,6 @@ const callGenerateEndpoint = async () => {
   {apiOutput && (
 <article>
   <div className="output">
-  <p>{userInput}</p>
     <div className="output-header-container">
       <div className="output-header">
         <h3>Quiz</h3>
